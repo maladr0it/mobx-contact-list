@@ -1,0 +1,39 @@
+{
+  "name": "react-test-task",
+  "version": "0.0.1",
+  "description": "React Test Task",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "lint": "eslint src/**/*.jsx"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "babel-eslint": "^8.2.2",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-evil-icons": "github:vitalyster/react-evil-icons#react16"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.10",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "node-sass": "^4.7.2",
+    "react-hot-loader": "^4.0.0",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.2",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.10",
+    "webpack-dev-server": "^3.1.0"
+  }
+}
