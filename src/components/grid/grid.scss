@@ -3,12 +3,13 @@
     display: flex;
   }
 
-  &.vbox {
+  &.column {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
-  &.hbox {
+  &.row {
     display: flex;
     flex-direction: row;
   }
