@@ -26,11 +26,31 @@
 .button {
   font-size: 1rem;
   padding: 5px;
-  border-radius: 2px;
-  background: royalblue;
+  background: #2892d7;
   color: white;
+  border: none;
+  cursor: pointer;
   &:disabled {
     background: #9197ae;
     color: #eeeeee;
   }
+}
+
+.icon-button {
+  outline: none;
+  color: #454545;
+  background: none;
+  border: none;
+  cursor: pointer;
+  &.red {
+    color: red;
+  }
+}
+
+.search-box {
+  font-size: 1rem;
+  display: block;
+  border: 1px solid #454545;
+  border-radius: 2px;
+  padding: 2px;
 }

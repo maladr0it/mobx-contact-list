@@ -1,23 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './app.scss';
-import { Column, Row, Title, Button } from '../components';
+import { Column } from '../components';
 import { ContactList, EditContact, AddContact } from '../views';
-
 import ContactStore from '../contactStore';
-
-// const onAddClick = () => {};
 
 const App = () => (
   <Router>
     <Column className="app">
-      {/* <Row>
-        <Title>Contact Book</Title>
-      </Row> */}
+      <button onClick={() => console.log(localStorage)}>PEEK_STORAGE</button>
       <Route path="/" exact render={() => <ContactList store={ContactStore} />} />
       <Route path="/add" render={() => <AddContact store={ContactStore} />} />
-      <Route path="/edit/:id" component={EditContact} />
+      <Route path="/edit/:id" render={() => <EditContact store={ContactStore} />} />
     </Column>
   </Router>
 );

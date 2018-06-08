@@ -1,4 +1,6 @@
 .typography {
+  color: #454545;
+
   &.title {
     font-size: 16pt;
   }
@@ -10,7 +12,9 @@
   &.label {
     font-size: 9pt;
   }
-
+  &.copy {
+    font-size: 12pt;
+  }
   &.description {
     font-size: 9pt;
   }
