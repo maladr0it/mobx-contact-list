@@ -9,7 +9,6 @@ import ContactStore from '../contactStore';
 const App = () => (
   <Router>
     <Column className="app">
-      <button onClick={() => console.log(localStorage)}>PEEK_STORAGE</button>
       <Route path="/" exact render={() => <ContactList store={ContactStore} />} />
       <Route path="/add" render={() => <AddContact store={ContactStore} />} />
       <Route path="/edit/:id" render={() => <EditContact store={ContactStore} />} />

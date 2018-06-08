@@ -1,25 +1,30 @@
-import { observable, computed, reaction, decorate } from 'mobx';
+import { observable, computed, autorun, toJS, decorate } from 'mobx';
 import uuidv4 from 'uuid/v4';
 
 class ContactStore {
   constructor() {
-    console.log('CREATING_CONTACT_STORE');
+    // generate dummy data if there isn't any contacts list in localStorage
     if (!localStorage.getItem('contacts')) {
-      console.log('no contacts in localstorage...');
       const contacts = [
         {
           id: '1',
           name: 'Sam',
-          phone: '99999999',
-          email: 'sam@email.com',
+          phone: '124-10998',
+          email: 'sam@gmail.com',
           favourited: true
         },
         {
           id: '2',
-          name: 'Tom',
-          phone: '88888888',
-          email: 'tom@gmail.com',
+          name: 'Samantha',
+          phone: '133-19859',
+          email: 'pink_unicorn@gmail.com',
           favourited: false
+        },
+        {
+          id: '3',
+          name: 'Samwise',
+          phone: '144-18744',
+          favourited: true
         }
       ];
       localStorage.setItem('contacts', JSON.stringify(contacts));
@@ -28,6 +33,7 @@ class ContactStore {
   }
   nameFilter = '';
   favoriteFilter = false;
+
   getContact = id => this.contacts.find(contact => contact.id === id);
   editContact = (id, data) => {
     const index = this.contacts.findIndex(contact => contact.id === id);
@@ -46,7 +52,6 @@ class ContactStore {
       ...data
     });
   };
-  updateLocalStorage = (() => this.contacts, contacts => console.log(contacts));
   get filteredContacts() {
     const pattern = new RegExp(`${this.nameFilter}`, 'i');
     return this.contacts
@@ -64,8 +69,15 @@ decorate(ContactStore, {
   contacts: observable,
   nameFilter: observable,
   favoriteFilter: observable,
-  updateLocalStorage: reaction,
   filteredContacts: computed
 });
 
-export default new ContactStore();
+const store = new ContactStore();
+
+// saves the contacts list to localstorage any time that they change
+autorun(() => {
+  const contacts = toJS(store.contacts);
+  localStorage.setItem('contacts', JSON.stringify(contacts));
+});
+
+export default store;
