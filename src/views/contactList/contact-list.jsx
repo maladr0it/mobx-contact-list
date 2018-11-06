@@ -8,6 +8,7 @@ import ContactItem from './contact-item';
 
 const ContactList = ({ store, history }) => (
   <Column className="contact-list-view">
+    {console.log(store)}
     <div className="search-controls">
       <SearchBox
         type="text"

@@ -1,4 +1,6 @@
-import { observable, computed, autorun, toJS, decorate } from 'mobx';
+import {
+  observable, computed, autorun, toJS, decorate
+} from 'mobx';
 import uuidv4 from 'uuid/v4';
 
 class ContactStore {
@@ -30,11 +32,12 @@ class ContactStore {
       localStorage.setItem('contacts', JSON.stringify(contacts));
     }
     this.contacts = JSON.parse(localStorage.getItem('contacts'));
+    this.nameFilter = '';
+    this.favoriteFilter = false;
   }
-  nameFilter = '';
-  favoriteFilter = false;
 
   getContact = id => this.contacts.find(contact => contact.id === id);
+
   editContact = (id, data) => {
     const index = this.contacts.findIndex(contact => contact.id === id);
     this.contacts[index] = {
@@ -42,16 +45,19 @@ class ContactStore {
       ...data
     };
   };
+
   favoriteContactToggle = (id) => {
     const index = this.contacts.findIndex(contact => contact.id === id);
     this.contacts[index].favourited = !this.contacts[index].favourited;
   };
+
   addContact = (data) => {
     this.contacts.push({
       id: uuidv4(),
       ...data
     });
   };
+
   get filteredContacts() {
     const pattern = new RegExp(`${this.nameFilter}`, 'i');
     return this.contacts
